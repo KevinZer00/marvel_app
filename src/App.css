@@ -1,38 +1,209 @@
-.App {
+body {
+  background-color: #f4f4f4;
+  background-image: radial-gradient(circle, #000 10%, transparent 10%), radial-gradient(circle, #000 10%, transparent 10%);
+  background-size: 10px 10px;
+  background-position: 0 0, 5px 5px;
+  font-family: 'Bangers', Arial, sans-serif; 
+}
+
+
+h1 {
   text-align: center;
+  font-size: 40px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1024px; 
+  margin: 0 auto;
+  padding: 20px;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.search-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-bottom: 20px;
+}
+
+.search-input, .search-button {
+  width: 90%; 
+  margin: 5px 0;
+}
+
+.search-input {
+  font-family: 'Bangers', Arial, sans-serif; 
+  font-size: 20px;
+  width: 300px;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  background-color: #eee;
+}
+
+.search-button {
+  font-family: 'Bangers', Arial, sans-serif; 
+  font-size: 20px;
+  width: 100px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-button:hover {
+  background-color: #333;
+}
+
+
+
+
+.results-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px;
+  justify-content: center; 
+  padding: 20px; 
+  max-width: 960px; 
+  margin: auto; 
+}
+
+.character-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  background-color: #f8f8f8;
+  border: 3px solid #000000;
+  padding: 15px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.character-card img {
+  width: 100%;
+  height: auto; 
+}
+
+.character-card h3, .character-card p {
+  text-align: center;
+  padding: 5px; 
+}
+
+.character-card:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+
+.modal-wrapper {
+  position: relative; 
+  padding: 20px; 
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+
+.close-button {
+  position: absolute;
+  top: 5px;  
+  right: 5px;
+  padding: 5px 10px;
+  background-color: red;
   color: white;
+  border: none;
+  border-radius: 50%;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 10;
+  animation: zoomIn 0.3s ease-out;
 }
 
-.App-link {
-  color: #61dafb;
+
+.modal h1, .modal h2 {
+  font-family: 'Bangers', cursive; 
+  color: #E62429;
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
+.modal-content {
+  background-color: #f4f4f4;
+  background-image: radial-gradient(circle, #000 10%, transparent 10%), radial-gradient(circle, #000 10%, transparent 10%);
+  background-size: 10px 10px;
+  background-position: 0 0, 5px 5px;
+  padding: 20px;
+  border: 5px solid #000;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  position: relative;
+  width: 600px;
+  max-height: 80vh; 
+  overflow-y: auto; 
+  overflow-x: hidden;
+  animation: zoomIn 0.3s ease-out;
+}
+
+.modal-content img {
+  display: block; 
+  margin: 20px auto;  
+  width: auto; 
+  height: auto; 
+  max-height: 300px; 
+  border: 3px solid black;
+}
+
+
+.modal h1, .modal h2 {
+  margin-top: 0;
+  padding-top: 20px;
+}
+
+.modal p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  padding: 5px;
+}
+
+.comic-appearances ul {
+  list-style: none;
+  padding: 0;
+}
+
+.comic-appearances li {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  margin: 5px 0;
+}
+
+@keyframes zoomIn {
   from {
-    transform: rotate(0deg);
+      transform: scale(0);
+      opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+      transform: scale(1);
+      opacity: 1;
   }
 }
