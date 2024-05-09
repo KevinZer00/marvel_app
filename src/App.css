@@ -17,14 +17,11 @@ h1 {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 1024px; 
   margin: 0 auto;
-  padding: 20px;
 
 }
 
 .search-container {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,7 +31,7 @@ h1 {
 
 .search-input, .search-button {
   width: 90%; 
-  margin: 5px 0;
+  margin: 5px auto;
 }
 
 .search-input {
@@ -102,6 +99,19 @@ h1 {
 .character-card:hover {
   transform: scale(1.1);
   cursor: pointer;
+}
+
+.character-card button {
+  background: none;
+  font-family: 'Bangers', Arial, sans-serif; 
+  font-size: 20px;
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+.character-card button:hover {
+  background: black;
+  color: white;
 }
 
 
@@ -205,5 +215,35 @@ h1 {
   to {
       transform: scale(1);
       opacity: 1;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1000px) {
+  .results-container {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+  
+  .modal-content {
+    width: 450px;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 699px) {
+  .results-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
+  .modal-content {
+    width: 400px;
+  }
+}
+
+@media (max-width: 499px) {
+  .results-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .modal-content {
+    width: 250px;
   }
 }
