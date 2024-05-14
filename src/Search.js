@@ -11,7 +11,7 @@ function Search() {
 
     const searchCharacters = async () => {
         try {
-            const response = await axios.get(`http://localhost:3001/characters?nameStartsWith=${query}`);
+            const response = await axios.get(`${process.env.API_URL}/characters?nameStartsWith=${query}`);
             setResults(response.data.data.results);
         } catch (error) {
             console.error('Error retrieving characters:', error);
@@ -93,7 +93,7 @@ function Search() {
                             <button onClick={(e) => { e.stopPropagation(); removeFavorite(fav.id); }} className="remove-favorite-button">
                                 Remove
                             </button>
-                            
+
                         </div>
                     ))}
                 </div>
@@ -106,13 +106,13 @@ function Search() {
                         <img src={`${selectedCharacter.thumbnail.path}/portrait_incredible.${selectedCharacter.thumbnail.extension}`} alt={selectedCharacter.name} />
                         <p>{selectedCharacter.description || 'No description available.'}</p>
                         <div className="comic-appearances">
-                <h2>Comic Appearances</h2>
-                <ul>
-                    {selectedCharacter.comics && selectedCharacter.comics.items.map((comic, index) => (
-                        <li key={index}>{comic.name}</li>
-                    ))}
-                </ul>
-            </div>
+                            <h2>Comic Appearances</h2>
+                            <ul>
+                                {selectedCharacter.comics && selectedCharacter.comics.items.map((comic, index) => (
+                                    <li key={index}>{comic.name}</li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 )}
             </Modal>
