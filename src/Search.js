@@ -12,6 +12,7 @@ function Search() {
     const searchCharacters = async () => {
         try {
             
+            console.log('API URL:', process.env.REACT_APP_API_URL);
             const response = await axios.get(`${process.env.REACT_APP_API_URL}/characters?nameStartsWith=${query}`);
 
             setResults(response.data.data.results);
