@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Search from './Search.js';
-import Modal from './Modals.js';
+
 
 function App() {
     const [favorites, setFavorites] = useState([]);

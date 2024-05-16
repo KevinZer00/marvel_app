@@ -15,13 +15,13 @@ app.use(express.json());
 
 // Define API routes before the catch-all route
 app.get('/characters', async (req, res) => {
+    console.log("API endpoint hit with query:", req.query); // Logging the query
     const { nameStartsWith } = req.query;
     const ts = new Date().getTime();
     console.log("Timestamp:", ts);
     console.log("Private Key:", process.env.MARVEL_PRIVATE_KEY);
     console.log("Public Key:", process.env.MARVEL_PUBLIC_KEY);
 
-    // Ensure all parts of the hash are properly defined and converted to strings
     if (!process.env.MARVEL_PRIVATE_KEY || !process.env.MARVEL_PUBLIC_KEY) {
         console.error("API keys are not set properly.");
         return res.status(500).send('Server configuration error');
@@ -38,7 +38,6 @@ app.get('/characters', async (req, res) => {
         res.status(500).send('Error fetching data');
     }
 });
-
 
 // Serve static files from React build directory
 app.use(express.static(path.join(__dirname, 'build')));
