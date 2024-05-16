@@ -11,7 +11,7 @@ function Search() {
 
     const searchCharacters = async () => {
         try {
-            const response = await axios.get(`/characters?nameStartsWith=${query}`);
+            const response = await axios.get(`https://marvelapp-c0865dd0adf5.herokuapp.com/characters?nameStartsWith=${query}`);
             setResults(response.data.data.results);
         } catch (error) {
             console.error('Error retrieving characters:', error);
